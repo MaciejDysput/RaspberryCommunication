@@ -1,13 +1,31 @@
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\providecommand{\Slowakluczowe}[1]
+{
+  \small	
+  \textbf{\textit{Słowa kluczowe---}} #1
+}
+
+
+
 \section{Streszczenie}
 Przedmiotem niniejszej pracy jest implementacja aplikacji internetowej do komunikacji tekstowej człowieka z maszyną. Kluczowym jej elementem jest możliwość translacji komend wpisanych w języku naturalnym na odpowiednie funkcje na mikrokontrolerze w aplikacji będącej komunikatorem. W ramach wykonania pracy stworzono odpowiedni obwód na płytce prototypowej. Zawiera ona podłączone elementy elektronicznie takie jak diody czy serwomechanizm. Dzięki połączeniom umożliwia wykonywanie różnych operacji na tych elementach w konfiguracji z aplikacją i mikrokontrolerem.
+\\
+\\
+\Slowakluczowe{Raspberry Pi, programowanie, aplikacja internetowa, klient, serwer}
+
 \section{Abstract}
 The subject of this thesis is the implementation of a web application for human-machine text communication. The key feature is the ability to translate commands written in a natural language into appropriate functions on the microcontroller in the communicator application. As part of the work, an appropriate circuit was created on the prototype board. It contains connected electronic components such as diodes or servos. Thanks to the connections, it allows you to perform operations on these elements in configuration with the application and the microcontroller.
+\\
+\\
+\keywords{Raspberry Pi, programming, web application, client, server}
 \section{Wstęp}
 Komunikacja tekstowa pomiędzy człowiekiem, a maszyną to proces, który polega na przekazywaniu i odbieraniu danych w postaci wysłanych wiadomości. W zależności od narzędzia może odbywać się na różne sposoby. W przypadku stosowania komputerów, wszystkie operacje mogą być wykonywane za pomocą klawiatury. Komunikacja może być stosowana przede wszystkim do wprowadzenia i kontrolowania danych w systemie. Taka relacja pozwala człowiekowi wysyłać polecenia, aby nawiązać komunikację z maszyną, która będzie odpowiadała na żądania. Ukazane rozwiązanie zakłada otrzymanie odpowiedzi w postaci odpowiednich działań z strony maszyny jaką jest Raspberry Pi poprzez wpisanie odpowiednich komend przez człowieka w aplikacji internetowej.
-\section{Historia}
-Początki komunikacji tekstowej pomiędzy człowiekiem, a maszyną sięgają kilkudziesięciu lat wstecz. Ich długa historia sięga od czasów początków komputera kiedy to maszyny te były obsługiwane przez operatorów. Komunikowali się oni z komputerem poprzez wpisywanie różnych danych za pomocą klawiatury. W późniejszych latach XX wieku pojawiły się różnego rodzaju systemy komunikacji tekstowej jak poczta elektroniczna, która zastępowała tradycyjną pocztę, a także komunikatory tekstowe, które ułatwiały komunikację pomiędzy ludźmi. Również komunikacja tekstowa pomiędzy człowiekiem, a maszyną znalazła swoje zastosowanie w różnych działach automatyki. Obejmowało to różnego rodzaju komunikacji, takie jak polecenia, pytania, odpowiedzi i komunikaty błędów. W automatyce, komunikację tekstową zaczęto stosować przede wszystkim by umożliwić komunikację ludziom z maszynami, które brały udział w różnych procesach przemysłowych czy wytwórczych. Do przesłanej wiadomości bądź żądania do maszyny, człowiek uzyskiwał określoną informację zwrotną. Komunikacja ta najczęściej stosowana była za pomocą interfejsów tekstowych lub graficznych. W automatyce przemysłowej komunikacja tekstowa jest ważnym narzędziem do zarządzania i sterowania procesami, monitorowania stanu maszyn a także samej kalibracji urządzeń i dokonywania wymaganych prac diagnostycznych. Informacje te przeważnie przekazywane są w postaci języka naturalnego. Za pomocą komunikacji tekstowej, maszyna jest w stanie rozpoznać i zrozumieć wprowadzony przez nas tekst i zamienić go na konkretne działania. Komunikacja tekstowa pomiędzy człowiekiem, a maszyną do dnia dzisiejszego ma szerokie zastosowanie. Umożliwia ona ludziom przesyłanie danych bądź korzystanie z różnych aplikacji i usług online takie jak czaty czy forum internetowe. Komunikacja tekstowa jest dostępna w każdym miejscu i o każdej porze tylko wymagany jest dostęp do urządzenia. Główną z zalet takiej komunikacji jest brak barier językowych. Komunikacja tekstowa umożliwia komunikację z maszynami, które są programowane do obsługi wielu języków przez co przekazywanie informacji może odbywać się z osobami posługującymi się innymi językami.
-\newpage
+
 \section{Omówienie planu pracy}
 Aplikacja internetowa do komunikacji tekstowej człowiek-maszyna jest aplikacją czasu rzeczywistego. Składa się ona z dwóch interfejsów użytkownika. Pierwszym widokiem jest okno dołączenia do czatu. Składa się z dwóch pól tekstowych do których możemy wprowadzić naszą nazwę użytkownika i pokój do którego chcemy dołączyć. Również mamy przycisk pozwalający zalogować się do komunikatora. Po wprowadzeniu danych przeniesie nas do wybranego przez nas pokoju. Nie jest ograniczona liczba użytkowników korzystających z aplikacji. 
 Drugim interfejsem użytkownika jest komunikator. Możemy tam wpisywać komendy, które pozwolą nam na komunikację z maszyną jaką jest Raspberry Pi. Za pomocą odpowiednich działań maszyna będzie nam odpowiadać na nasze żądania napisane w języku naturalnym. 
-

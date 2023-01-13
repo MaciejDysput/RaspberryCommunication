@@ -53,7 +53,7 @@ Strona klienta została zaimplementowana przy użyciu biblioteki React.js, któr
 \item \textbf{ Wiadomość}, komponent ten zwraca widok wyrenderowania pojedynczej wiadomości
 	\\
 \end{itemize}
-
+\newpage
 \subsection{Komponent logowania}
 \begin{figure}[htbp]
 	\centering
@@ -61,7 +61,11 @@ Strona klienta została zaimplementowana przy użyciu biblioteki React.js, któr
 	\caption{Interfejs logowania}
 	\label{fig:7}
 \end{figure}
+
 Komponent Logowania wyświetla formularz, w którym użytkownik może wprowadzić swoją nazwę i nazwę pokoju do którego chce dołączyć. Za pomocą przycisku „Sign In” może on przejść do komunikatora tekstowego. Nazwa użytkownika jest dowolna. Klient może dołączyć do pokoju, z którego korzystają już inni użytkownicy, a także może stworzyć swój własny oddzielny pokój. 
+
+
+W komponencie logowania zaimplementowano funkcję zwracającą widok interfejsu użytkownika umożliwiającego dołączenie do czatu oraz dwie metody, które przechowują stany parametrów. Zmienne te pełnią ważną rolę podczas logowania użytkownika do aplikacji czatu. W nich przechowywana jest obecna wartość parametru nazwy pokoju i klienta. Umożliwiają one również rejestrowanie zmian tych dwóch stanów i dokonanie aktualizacji obecnej wartości parametru. W przypadku ustalenia nazwy użytkownika, metoda ta przechowuje obecną wartość wpisaną w polu tekstowym odpowiedzialnym za przechowywanie nazwy klienta korzystającego z aplikacji. Logując się ponownie do aplikacji jesteśmy w stanie zmieniać wartość tego pola i wpisywać nową nazwę użytkownika. Adekwatna sytuacja występuje również w przypadku metody służącej do przypisania nazwy pokoju. Komponent ten zwraca funkcję, która renderuje formularz. Zawiera on dwa pola tekstowe umożliwiającymi wprowadzenie nazwy użytkownika i pokoju komunikatora, a także przycisk logowania. Kiedy użytkownik wprowadzi swoją nazwę to obecny stan wartości zmiennej jest aktualizowany. Adekwatna sytuacja występuje przy wprowadzeniu nazwy pokoju. W komponencie zaimplementowano również mechanizm, który umożliwia przekierowanie użytkownika do strony komunikatora poprzez kliknięcie przycisku. Do spełnienia tej czynności, wymagane jest wypełnienie pola tekstowego z nazwą użytkownika i pokoju. Jeżeli jedno z tych sekcji jest niewypełnione, niemożliwe będzie przejście do komunikatora. Wymagane jest wpisanie obu danych w celu uzyskania dostępu do zalogowania.
 \newpage
 \begin{lstlisting}[caption=Implementacja komponentu logowania]
 export default function SignIn() {
@@ -109,7 +113,6 @@ export default function SignIn() {
     )}
 \end{lstlisting}
 \newpage
-W komponencie logowania zaimplementowano funkcję zwracającą widok interfejsu użytkownika umożliwiającego dołączenie do czatu oraz dwie metody, które przechowują stany parametrów. Zmienne te pełnią ważną rolę podczas logowania użytkownika do aplikacji czatu. W nich przechowywana jest obecna wartość parametru nazwy pokoju i klienta. Umożliwiają one również rejestrowanie zmian tych dwóch stanów i dokonanie aktualizacji obecnej wartości parametru. W przypadku ustalenia nazwy użytkownika, metoda ta przechowuje obecną wartość wpisaną w polu tekstowym odpowiedzialnym za przechowywanie nazwy klienta korzystającego z aplikacji. Logując się ponownie do aplikacji jesteśmy w stanie zmieniać wartość tego pola i wpisywać nową nazwę użytkownika. Adekwatna sytuacja występuje również w przypadku metody służącej do przypisania nazwy pokoju. Komponent ten zwraca funkcję, która renderuje formularz. Zawiera on dwa pola tekstowe umożliwiającymi wprowadzenie nazwy użytkownika i pokoju komunikatora, a także przycisk logowania. Kiedy użytkownik wprowadzi swoją nazwę to obecny stan wartości zmiennej jest aktualizowany. Adekwatna sytuacja występuje przy wprowadzeniu nazwy pokoju. W komponencie zaimplementowano również mechanizm, który umożliwia przekierowanie użytkownika do strony komunikatora poprzez kliknięcie przycisku. Do spełnienia tej czynności, wymagane jest wypełnienie pola tekstowego z nazwą użytkownika i pokoju. Jeżeli jedno z tych sekcji jest niewypełnione, niemożliwe będzie przejście do komunikatora. Wymagane jest wpisanie obu danych w celu uzyskania dostępu do zalogowania.
 \subsection{Komponent komunikatora}
 \begin{figure}[htbp]
 	\centering
@@ -117,7 +120,7 @@ W komponencie logowania zaimplementowano funkcję zwracającą widok interfejsu 
 	\caption{Widok komponentu komunikatora}
 	\label{fig:9}
 \end{figure} 
-\newpage
+
 Komponent czatu wyświetla komunikator tekstowy, w którym użytkownik może wprowadzać swoje żądania i komunikować się z maszyną. W jego skład wchodzą takie komponenty jak: 
 \begin{itemize}  
 \item \textbf{ Nawigacja}
@@ -127,7 +130,6 @@ Komponent czatu wyświetla komunikator tekstowy, w którym użytkownik może wpr
 \item \textbf{ Zbiór wiadomości}
 	\\
 \item \textbf{ Wiadomość}
-	\\
 \end{itemize}
 Każdy z tych fragmentów interfejsu spełnia swoje założenia co pozwala na stworzenie widoku komunikatora. Komponent Nawigacji renderuje widok paska zawierającego nazwę pokoju oraz ikony z aktywnością pokoju i zamknięcia. Pierwsza z tych ikon wyświetlana jest zawsze i oznacza status dostępny w postaci zielonego koła. Po kliknięciu ikony zamknięcia zostaniemy ponownie przekierowany do komponentu logowania.
 \begin{lstlisting}[caption=Implementacja komponentu nawigacji ]
@@ -141,11 +143,9 @@ const InfoBar = ({ room }) => (
     <div className="rightInnerContainer">
       <a href="/"><img src={closeIcon} alt="close icon" /></a>
     </div>
-  </div>
-);
+  </div>);
 \end{lstlisting}
 Komponent Komunikacji służy do wysyłania wiadomości w aplikacji czatu. Element ten składa się z formularza zawierającego przycisk do wysyłania wiadomości i jedno pole tekstowe umożliwiające wpisanie wiadomości. Do komponentu przekazywane są 3 parametry odpowiedzialne za zarządzanie operacjami wysyłania wiadomości. Pozwalają one na aktualizację stanu tekstu wiadomości i przechowywanie aktualnej wartości wpisanej komendy. Podczas kliknięcia przycisku wywoływana jest funkcja odpowiedzialna za wysłanie wiadomości wpisanej w polu tekstowym.
-\newpage
 \begin{lstlisting}[caption=Implementacja komponentu komunikacji ]
 const Input = ({message,setMessage, sendMessage }) => (
         <form className='form'>
@@ -164,7 +164,7 @@ const Input = ({message,setMessage, sendMessage }) => (
         </form>
 )
 \end{lstlisting}
-
+\newpage
 Komponent o nazwie zbiór wiadomości renderuje nam widok wyświetlający listę wysłanych poleceń w aplikacji. Do elementu przekazywane są 2 parametry, które pozwalają na przekazywanie informacji o użytkowniku, który wysłał wiadomość. W komponencie zaimplementowany został element ScrollToBottom, który automatycznie przewija stronę do dołu, gdy dodawane są nowe wiadomości. Jest to wbudowana funkcja, udostępniana przez bibliotekę React.js. Za pomocą funkcji mapowania tworzone są  komponenty pojedynczej wiadomości dla każdego nowego wysłanego polecenia. Do wyrenderowanych elementów przekazywane są dwa parametry z komponentu zbioru wiadomości. Przypisywanie unikalnego klucza identyfikacji dla elementu pomaga systemowi w efektywnym zarządzaniu stanem aplikacji i wykrywaniu ewentualnych zmian w komponencie. 
 \begin{lstlisting}[caption=Implementacja komponentu zbior wiadomosci ]
 import ScrollToBottom from 'react-scroll-to-bottom';
@@ -314,6 +314,7 @@ Aby móc wędrować pomiędzy komponentami logowania i czatu konieczne było stw
 Strona serwera została zaimplementowana przy użyciu środowiska uruchomieniowego Node.js. Umożliwia ono tworzenie szybkich i skalowalnych aplikacji sieciowych za pomocą języka JavaScript. Node.js używa modelu jednowątkowego do obsługi wielu żądań jednocześnie co oznacza, że jest on idealny do tworzenia aplikacji sieciowych takich jak serwery czy komunikatory tekstowe. Ważnym aspektem przy korzystaniu z środowiska uruchomieniowego Node.js jest możliwość tworzenia aplikacji w czasie rzeczywistym. Po stronie serwera zaimplementowany został cały mechanizm komunikacji z naszą maszyną, która umożliwia przede wszystkim przesyłanie oraz odbieranie danych.
 Biblioteka Express.js  jest narzędziem sieciowym dla Node.js, która umożliwia tworzenie aplikacji opartych na serwerze. Express.js umożliwia obsługę żądań oraz mapowanie adresów URL na odpowiednie funkcje obsługujące te żądania. Głównym zastosowaniem biblioteki express.js jest możliwość tworzenia serwera HTTP, który będzie odpowiadał na żądania aplikacji klienckich. Biblioteka express.js znajduje swoje szerokie zastosowanie przy tworzeniu aplikacji serwerowych. Poza możliwością tworzenia serwera http, express.js umożliwia również obsługę różnych żądań czy parsowanie przesyłanych żądań. Możliwa jest również obsługa sesji użytkowników, autoryzację, a także przechowywanie i udostępnianie danych.
 Node.js oferuje nam biblioteki http i express, które umożliwiają stworzenie serwera. Przy użyciu protokołu sieciowego tworzona jest jego instancja. Strona serwera nasłuchuje zdarzenia na wybranym porcie i loguje informację o uruchomieniu. Port to numer identyfikujący aplikację. Przy tworzeniu serwera konieczne jest ustalenie numeru portu, na którym możliwe będzie nasłuchiwanie i odbieranie połączeń od klientów. Użytkownicy mogą wysyłać zapytania do serwera poprzez podanie adresu IP serwera i numeru portu. Serwer odpowiada na żądania klientów poprzez wysłanie danych z powrotem do użytkownika poprzez ten sam port. Przy pomocy biblioteki express, serwer będzie nasłuchiwał żądań i odpowiadać na nie. 
+\newpage
 \begin{lstlisting}[caption=Implementacja serwera]
 const http = require('http')
 const express = require('express')
@@ -684,7 +685,7 @@ Serwomechanizm służy do precyzyjnego sterowania położeniem obrotowego elemen
 
 
 
-
+\newpage
 \begin{figure}[h]
 \begin{subfigure}{0.5\textwidth}
 \includegraphics[width=0.9\linewidth, height=6cm]{"obrazy/ukladpolaczenia3"} 
@@ -718,7 +719,7 @@ class Archiver {
         if (!fs.existsSync(this.#archivePath)) {
             return;
         }
-        const archive = fs.readFileSync(this.#archivePath, 'utf8')
+        const archive=fs.readFileSync(this.#archivePath, 'utf8')
         this.#archiveContent = JSON.parse(archive)
     }
     fetch(room) {
