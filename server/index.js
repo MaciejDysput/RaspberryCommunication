@@ -2,7 +2,6 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const cors = require('cors')
-const messageRoute = require('./messageRoute')
 const { Archiver } = require('./archiver')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users')
 const {
@@ -31,7 +30,6 @@ const archive = new Archiver()
 archive.start()
 app.use(cors())
 app.use(router)
-app.use('/messages', messageRoute)
 let createdTime = Date.now()
 
 io.on('connection', (socket) => {
@@ -115,7 +113,6 @@ io.on('connection', (socket) => {
                 break
             }
         }
-
         await archive.archive(message, user.name, createdTime, user.room)
         io.to(user.room).emit('message', {
             user: user.name,
